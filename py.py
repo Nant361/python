@@ -26,13 +26,16 @@ banner = r"""
 """
 print(banner)
 
-# --- Konfigurasi Userbot untuk @IDStealthBot ---
-api_id = 21960406
-api_hash = "846bca703fc77480a7a7c9b02fe59b7d"
-session_name = "botb_session"
+API_ID = int(os.getenv("API_ID"))
+API_HASH = os.getenv("API_HASH")
+SECOND_BOT_TOKEN = os.getenv("SECOND_BOT_TOKEN")
 
-client = TelegramClient(session_name, api_id, api_hash)
+session_name = "botb_session"
+client = TelegramClient(session_name, API_ID, API_HASH)
+bot_client = TelegramClient("bot_session_second", API_ID, API_HASH)
+
 target_bot = '@IDStealthBot'
+
 
 # --- Konfigurasi Bot Telegram Kedua (Forwarding) ---
 # Bot kedua ini akan mendengarkan pesan masuk via bot token
